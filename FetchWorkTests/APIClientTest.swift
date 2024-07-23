@@ -60,68 +60,36 @@ class APIClientTests: XCTestCase {
         let mockSession = MockURLSession()
         let apiClient = APIClient(urlSession: mockSession)
 
-        let expectedMealDetails = MealsContainer(meals: [MealData(
-            idMeal: "1",
-            strMeal: "Spaghetti Carbonara",
-            strDrinkAlternate: "Non-Alcoholic Version",
-            strCategory: "Pasta",
-            strArea: "Italian",
-            strInstructions: "Some instructions",
-            strMealThumb: "https://example.com/spaghetti.jpg",
-            strTags: "italian,pasta,creamy",
-            strYoutube: "https://youtube.com/watch?v=12345",
-            strIngredient1: "1",
-            strIngredient2: "2",
-            strIngredient3: "3",
-            strIngredient4: "4",
-            strIngredient5: "5",
-            strIngredient6: "",
-            strIngredient7: "",
-            strIngredient8: "",
-            strIngredient9: "",
-            strIngredient10: "",
-            strIngredient11: "",
-            strIngredient12: "",
-            strIngredient13: "",
-            strIngredient14: "",
-            strIngredient15: "",
-            strIngredient16: "",
-            strIngredient17: "",
-            strIngredient18: "",
-            strIngredient19: "",
-            strIngredient20: "",
-            strMeasure1: "200g",
-            strMeasure2: "100g",
-            strMeasure3: "2",
-            strMeasure4: "1/2 cup",
-            strMeasure5: "To taste",
-            strMeasure6: "",
-            strMeasure7: "",
-            strMeasure8: "",
-            strMeasure9: "",
-            strMeasure10: "",
-            strMeasure11: "",
-            strMeasure12: "",
-            strMeasure13: "",
-            strMeasure14: "",
-            strMeasure15: "",
-            strMeasure16: "",
-            strMeasure17: "",
-            strMeasure18: "",
-            strMeasure19: "",
-            strMeasure20: "",
-            strSource: "https://example.com/recipe",
-            strImageSource: "https://example.com/spaghetti.jpg",
-            strCreativeCommonsConfirmed: "Yes",
-            dateModified: "2024-07-22"
-        )])
+        let expectedMealDetails = MealsContainer(meals: [MealData(idMeal: "1",
+                                                                  meal: "Spaghetti Carbonara",
+                                                                  instructions: "Some instructions",
+                                                                  ingredient1: "1",
+                                                                  ingredient2: "2",
+                                                                  ingredient3: "3",
+                                                                  ingredient4: "4",
+                                                                  ingredient5: "5",
+                                                                  ingredient6: "",
+                                                                  ingredient7: "",
+                                                                  ingredient8: "",
+                                                                  ingredient9: "",
+                                                                  ingredient10: "",
+                                                                  ingredient11: "",
+                                                                  ingredient12: "",
+                                                                  ingredient13: "",
+                                                                  ingredient14: "",
+                                                                  ingredient15: "",
+                                                                  ingredient16: "",
+                                                                  ingredient17: "",
+                                                                  ingredient18: "",
+                                                                  ingredient19: "",
+                                                                  ingredient20: "")])
         let jsonData = try JSONEncoder().encode(expectedMealDetails)
         mockSession.nextData = jsonData
         mockSession.response = HTTPURLResponse(url: URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=testid")!, statusCode: 200, httpVersion: nil, headerFields: nil)
 
         let mealDetails = try await apiClient.fetchMealDetails(id: "testid")
 
-        XCTAssertEqual(mealDetails.meals.first?.strMeal, expectedMealDetails.meals.first?.strMeal)
+        XCTAssertEqual(mealDetails.meals.first?.meal, expectedMealDetails.meals.first?.meal)
     }
 
     func testFetchMealDetailsFailure() async throws {
