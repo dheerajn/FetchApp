@@ -22,7 +22,9 @@ final class FetchWorkUITests: XCTestCase {
         app.scrollToBottom()
         XCTAssertTrue(app.staticTexts["White chocolate creme brulee"].exists)
     }
+}
 
+private extension FetchWorkUITests {
     func mock(requestURL: String, withResource: String) {
         let bundle = Bundle(for: type(of: self))
         if let path = bundle.path(forResource: withResource, ofType: "json") {
@@ -40,6 +42,7 @@ final class FetchWorkUITests: XCTestCase {
 
 private extension XCUIApplication {
     func scrollToBottom() {
+        // This is hardcoded for now but once we have actual data we will calculate based on business logic
         var maxScrolls = 5
         while maxScrolls > 0 {
             swipeUp()

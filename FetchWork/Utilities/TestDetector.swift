@@ -9,6 +9,7 @@ import Foundation
 
 /// Helps to detect if the app is running UI test cases
 struct TestDetector {
+    /// Tell if the app is runnning UI test cases
     static var isRunningUITests: Bool {
         ProcessInfo.processInfo.arguments.contains("isRunningUITests")
     }

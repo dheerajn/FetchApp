@@ -14,15 +14,15 @@ actor Imageloader {
         case badImage
     }
 
+    enum CacheEntry {
+        case inProgress(Task<Image, Error>)
+        case ready(Image)
+    }
+
     private var cache = [URL: CacheEntry]()
     
     init() {
         print("imageLoader init")
-    }
-    
-    enum CacheEntry {
-        case inProgress(Task<Image, Error>)
-        case ready(Image)
     }
     
     /// Asynchronously downloads an image from a given URL.

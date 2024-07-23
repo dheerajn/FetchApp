@@ -37,7 +37,7 @@ struct DessertsView: View {
         }
     }
     
-    var dessertsDetailsView: some View {
+    private var dessertsDetailsView: some View {
         List(viewModel.desserts) { currentMeal in
             NavigationLink {
                 DessertDetailsView(viewModel: DessertDetailsViewModel(mealId: currentMeal.idMeal))

@@ -34,7 +34,7 @@ struct DessertDetailsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    var dessertDetailsView: some View {
+    private var dessertDetailsView: some View {
         VStack(alignment: .leading) {
             TitleView(title: viewModel.dessertDetailsInfo?.mealName ?? "No meal Name")
             CaptionView(caption: viewModel.dessertDetailsInfo?.instructions ?? "No mean instructions")
