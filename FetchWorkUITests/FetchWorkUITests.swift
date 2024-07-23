@@ -40,7 +40,6 @@ final class FetchWorkUITests: XCTestCase {
 
 private extension XCUIApplication {
     func scrollToBottom() {
-        let collectionView = descendants(matching: .collectionView).firstMatch
         var maxScrolls = 5
         while maxScrolls > 0 {
             swipeUp()

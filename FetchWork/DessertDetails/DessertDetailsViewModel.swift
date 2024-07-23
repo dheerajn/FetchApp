@@ -43,8 +43,8 @@ class DessertDetailsViewModel {
                     return
                 }
                 await MainActor.run {
-                    dessertDetailsInfo = DessertDetailsInfo(mealName: validMeal.strMeal,
-                                                            instructions: validMeal.strInstructions,
+                    dessertDetailsInfo = DessertDetailsInfo(mealName: validMeal.meal,
+                                                            instructions: validMeal.instructions,
                                                             allIngredients: validMeal.allIngredients)
                     dessertAPICall = .ready
                 }
