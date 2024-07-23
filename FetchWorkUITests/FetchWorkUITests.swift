@@ -29,7 +29,12 @@ private extension FetchWorkUITests {
         let bundle = Bundle(for: type(of: self))
         if let path = bundle.path(forResource: withResource, ofType: "json") {
             do {
-                let data = try String(contentsOf: URL(filePath: path))
+                let data: String
+                if #available(iOS 16.0, *) {
+                    data = try String(contentsOf: URL(filePath: path))
+                } else {
+                    data = try String(contentsOf: URL(fileURLWithPath: path))
+                }
                 app.launchEnvironment[requestURL] = data
             } catch {
                 XCTFail("Failed to load JSON: \(error.localizedDescription)")

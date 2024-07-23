@@ -15,7 +15,8 @@ struct DessertsView: View {
     @StateObject var viewModel = DessertsViewModel()
 
     var body: some View {
-        NavigationStack {
+//        NavigationStack { // iOS 16
+        NavigationView {
             VStack {
                 switch viewModel.status {
                 case .error:

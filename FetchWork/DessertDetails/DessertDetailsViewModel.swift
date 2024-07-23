@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-@Observable // from iOS 17
-final class DessertDetailsViewModel {
+//@Observable // from iOS 17
+final class DessertDetailsViewModel: ObservableObject {
     struct DessertDetailsInfo {
         var mealName: String
         var instructions: String
@@ -25,7 +25,7 @@ final class DessertDetailsViewModel {
     private let apiClient: APIClientProtocol
     private(set) var dessertDetailsInfo: DessertDetailsInfo?
 
-    var dessertAPICall: DessertDetailsAPICall = .inProgress
+    @Published var dessertAPICall: DessertDetailsAPICall = .inProgress
 
     init(mealId: String, apiClient: APIClientProtocol = APIClient()) {
         self.mealId = mealId

@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ErrorView: View {
+    private let errorString = "Error fetching data."
     var body: some View {
-        ContentUnavailableView("Error fetching data.", systemImage: "exclamationmark.icloud")
+        if #available(iOS 17.0, *) {
+            ContentUnavailableView(errorString, systemImage: "exclamationmark.icloud")
+        } else {
+            Text(errorString)
+        }
     }
 }
 
