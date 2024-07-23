@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class DessertsViewModel: ObservableObject {
+final class DessertsViewModel: ObservableObject {
     enum DessertStatus {
         case inProgress
         case ready
@@ -31,7 +31,9 @@ class DessertsViewModel: ObservableObject {
                 status = .ready
             }
         } catch {
-            status = .error
+            await MainActor.run {
+                status = .error
+            }
         }
     }
 }

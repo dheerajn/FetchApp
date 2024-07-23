@@ -7,7 +7,7 @@
 
 @testable import FetchWork
 
-class MockAPIClient: APIClientProtocol {
+final class MockAPIClient: APIClientProtocol {
     var fetchDessetsError: Error?
     var fetchDessertReturnValue: Desserts?
     

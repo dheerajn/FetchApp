@@ -11,7 +11,7 @@ import Foundation
 import XCTest
 import Combine
 
-class MockURLSession: URLSessionProtocol {
+final class MockURLSession: URLSessionProtocol {
     var nextData: Data?
     var nextError: Error?
     var response: URLResponse?
@@ -27,7 +27,7 @@ class MockURLSession: URLSessionProtocol {
     }
 }
 
-class APIClientTests: XCTestCase {
+final class APIClientTests: XCTestCase {
     func testFetchDessertsSuccess() async throws {
         let mockSession = MockURLSession()
         let apiClient = APIClient(urlSession: mockSession)

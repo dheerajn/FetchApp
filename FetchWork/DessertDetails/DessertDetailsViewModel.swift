@@ -8,7 +8,7 @@
 import SwiftUI
 
 @Observable // from iOS 17
-class DessertDetailsViewModel {
+final class DessertDetailsViewModel {
     struct DessertDetailsInfo {
         var mealName: String
         var instructions: String

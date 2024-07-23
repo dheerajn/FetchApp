@@ -19,7 +19,7 @@ struct DessertsView: View {
             VStack {
                 switch viewModel.status {
                 case .error:
-                    Text("Error fetching Dessets")
+                    ErrorView()
 
                 case .inProgress:
                     ProgressView()

@@ -24,7 +24,7 @@ struct DessertDetailsView: View {
                 dessertDetailsView
 
             case .error:
-                Text("Error fetching Meal details")
+                ErrorView()
             }
         }
         .onAppear {
